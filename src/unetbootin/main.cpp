@@ -379,14 +379,8 @@ int main(int argc, char **argv)
 					is_mojave_or_above = true;
 				}
 			}
-			if (is_mojave_or_above) {
-				QDir resourceDir = QDir(QApplication::applicationDirPath());
-				resourceDir.cdUp();
-				resourceDir.cd("Resources");
-				QProcess::startDetached("bash", QStringList() << "-c" << QString("SUDO_ASKPASS='%1' sudo --askpass '%2' %3").arg(resourceDir.absoluteFilePath("askpass.js")).arg(app.applicationFilePath()).arg(argsconcSingleQuote));
-			} else {
-				QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
-			}
+			
+			QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
             return 0;
 #endif
 		}
