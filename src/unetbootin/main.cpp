@@ -381,6 +381,7 @@ int main(int argc, char **argv)
 			}
 			
 			QProcess::startDetached("osascript", QStringList() << "-e" << QString("do shell script \"'%1' %2\" with administrator privileges").arg(app.applicationFilePath()).arg(argsconcSingleQuote));
+	
             return 0;
 #endif
 		}
